@@ -1,4 +1,4 @@
-package com.didispace;
+package com.frank.bbs.eureka.ribbon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

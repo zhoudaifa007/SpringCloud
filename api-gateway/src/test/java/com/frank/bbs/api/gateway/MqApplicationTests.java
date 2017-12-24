@@ -1,4 +1,4 @@
-package com.midea.cloud.bbs.apigateway;
+package com.frank.bbs.api.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

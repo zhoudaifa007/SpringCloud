@@ -1,4 +1,4 @@
-package com.frank;
+package com.frank.bbs.eureka.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

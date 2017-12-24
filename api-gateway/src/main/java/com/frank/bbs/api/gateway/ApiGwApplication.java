@@ -1,4 +1,4 @@
-package com.midea.cloud.bbs.apigateway;
+package com.frank.bbs.api.gateway;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
