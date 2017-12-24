@@ -10,7 +10,7 @@
 	<modules>
         <module>consumer-demo</module>
         <module>eureka-server</module>
-        <module>provider-demo</module>
+        <module>eureka-ribbon</module>
         <module>api-gateway</module>
     </modules>
 
