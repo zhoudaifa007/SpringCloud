@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration debug="true">
-	<property name="LOG_HOME" value="/apps/injection/logs" />
+	<property name="LOG_HOME" value="/app/frank/apigw/logs" />
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
@@ -9,35 +9,12 @@
 		</encoder>
 	</appender>
 
-	<appender name="MQ-KAFKA"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/midea-cloud-injection-mq-kafka.log</file>
-
-		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${LOG_HOME}/midea-cloud-injection-mq-kafka.%i.log.zip
-			</fileNamePattern>
-			<minIndex>1</minIndex>
-			<maxIndex>20</maxIndex>
-		</rollingPolicy>
-
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n
-			</pattern>
-			<charset>UTF-8</charset>
-		</encoder>
-
-		<triggeringPolicy
-			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>500MB</MaxFileSize>
-		</triggeringPolicy>
-	</appender>
-
-	<appender name="MQ-RABBIT"
+	<appender name="APIGW"
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/midea-cloud-injection-mq-rabbit.log</file>
+		<file>${LOG_HOME}/apigw.log</file>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${LOG_HOME}/midea-cloud-injection-mq-rabbit.%i.log.zip
+			<fileNamePattern>${LOG_HOME}/apigw.%i.log.zip
 			</fileNamePattern>
 			<minIndex>1</minIndex>
 			<maxIndex>20</maxIndex>
@@ -55,54 +32,29 @@
 		</triggeringPolicy>
 	</appender>
 
-	<appender name="MQ-COMMON"
-			  class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/midea-cloud-injection-mq-common.log</file>
-
-		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${LOG_HOME}/midea-cloud-injection-mq-common.%i.log.zip
-			</fileNamePattern>
-			<minIndex>1</minIndex>
-			<maxIndex>20</maxIndex>
-		</rollingPolicy>
-
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n
-			</pattern>
-			<charset>UTF-8</charset>
-		</encoder>
-
-		<triggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>500MB</MaxFileSize>
-		</triggeringPolicy>
-	</appender>
-
-	<logger name="org.springframework" level="WARN" additivity="false">
-		<appender-ref ref="MQ-COMMON" />
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
+	</logger>
+	<logger name="org.springframework.boot" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
+	</logger>
+	<logger name="org.mybatis" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
+	</logger>
+	<logger name="com.alibaba" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
+	</logger>
+	<logger name="org.apache" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
+	</logger>
+	<logger name="com.frank" level="INFO" additivity="false">
+		<appender-ref ref="APIGW" />
 		<appender-ref ref="STDOUT" />
 	</logger>
-	<logger name="sun.rmi" level="WARN" additivity="false">
-		<appender-ref ref="MQ-COMMON" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-	<logger name="com.midea.cloud.injection.mq.kafka" level="INFO" additivity="false">
-		<appender-ref ref="MQ-KAFKA" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-	<logger name="com.midea.cloud.injection.mq.rabbit" level="INFO" additivity="false">
-		<appender-ref ref="MQ-RABBIT" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-	<logger name="com.midea.cloud.injection.mq" level="INFO" additivity="false">
-		<appender-ref ref="MQ-COMMON" />
-		<appender-ref ref="STDOUT" />
-	</logger>
-
 
 	<root level="INFO">
-		<appender-ref ref="MQ-COMMON" />
+		<appender-ref ref="APIGW" />
 		<appender-ref ref="STDOUT" />
 	</root>
-	
+
 </configuration>

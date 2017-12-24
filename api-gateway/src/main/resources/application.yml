@@ -1,16 +1,16 @@
 server:
-  port: 5555
+  port: 8081
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://10.133.146.41:1111/eureka/
+      defaultZone: http://192.168.1.101:8181/eureka/
 
 zuul:
    routes:
       api-login:
-         path: /add
-         serviceId: compute-service
+         path: /provider
+         serviceId: provider-service
 
 spring:
     application:
@@ -18,8 +18,5 @@ spring:
 
 #日志
 logging:
-  level:
-    path: F:/work/bbs/api-gateway/src/main/resources
-    file: logback.xml
-    root: DEBUG
+  config: F:/github/SpringCloud/api-gateway/src/main/resources/logback.xml
 

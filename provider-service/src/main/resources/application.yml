@@ -1,0 +1,9 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://192.168.1.101:8181/eureka/
+server:
+    port: 2222
+spring:
+    application:
+        name: provider-service
