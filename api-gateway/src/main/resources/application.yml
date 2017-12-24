@@ -1,0 +1,25 @@
+server:
+  port: 5555
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.133.146.41:1111/eureka/
+
+zuul:
+   routes:
+      api-login:
+         path: /add
+         serviceId: compute-service
+
+spring:
+    application:
+        name: api-gateway
+
+#日志
+logging:
+  level:
+    path: F:/work/bbs/api-gateway/src/main/resources
+    file: logback.xml
+    root: DEBUG
+
